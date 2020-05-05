@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="using:APRSOFTWARE_APP"
+             x:Class="APRSOFTWARE_APP.MasterpageMaster"
+             Title="Master"
+             BackgroundColor="#009bc8">
+    <ContentPage.Resources>
+        <StyleSheet Source="/General.css"/>
+    </ContentPage.Resources>
+
+    <StackLayout >
+        <ListView x:Name="MenuItemsListView"
+                  SeparatorVisibility="Default"
+                  HasUnevenRows="true">
+           <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MasterpageMasterMenuItem}">
+                    <local:MasterpageMasterMenuItem Title="Lecturas por rutas" IconSource="rutas.png" TargetType="{x:Type local:ListadoRutas}" />
+                    <local:MasterpageMasterMenuItem Title="Importar-Exportar" IconSource="importar.png" TargetType="{x:Type local:ImportarExportar}" />
+                    <local:MasterpageMasterMenuItem Title="Sincronizar" IconSource="sincronizar.png" TargetType="{x:Type local:Sincronizar}" />
+                </x:Array>
+           </ListView.ItemsSource>
+           <ListView.Header>
+             <Grid BackgroundColor="#00577B">
+                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                 </Grid.ColumnDefinitions>
+                 <Grid.RowDefinitions>
+                     <RowDefinition Height="5"/>
+                     <RowDefinition Height="Auto"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="5"/>
+                 </Grid.RowDefinitions>
+                    <Image Source="logo2.png"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           HorizontalOptions="Start">                        
+                    </Image>
+                  <Label x:Name="usuario"
+                         Grid.Column="1"
+                         Grid.Row="2"
+                         Text="APPRSoftware"
+                         FontFamily="Big"
+                         TextColor="White"
+                         FontSize="40">                        
+                  </Label>
+             </Grid>
+            </ListView.Header>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+             <Grid Padding="5,10">
+                 <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="30"/>
+                 <ColumnDefinition Width="*" />
+                 </Grid.ColumnDefinitions>
+                    <Image Source="{Binding IconSource}" 
+                           StyleClass="sidebar_icono">                                
+                    </Image>
+                    <Label VerticalOptions="FillAndExpand" 
+                           Grid.Column="1"
+                           VerticalTextAlignment="Center" 
+                           Text="{Binding Title}" 
+                           FontFamily="Nexa"
+                           TextColor="White"
+                           d:Text="{Binding .}"
+                           FontSize="20">                                
+                    </Label>
+             </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+    
+</ContentPage>

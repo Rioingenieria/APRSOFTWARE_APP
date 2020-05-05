@@ -1,0 +1,21 @@
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\App.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Conexion.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\ImportarExportar.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Lecturas por rutas\Lectura_agregar.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Lecturas por rutas\ListadoRutas.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Login.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Menu\Masterpage.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Menu\MasterpageDetail.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Menu\MasterpageMaster.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\Sincronizar.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\APRSOFTWARE_APP.AssemblyInfoInputs.cache
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\APRSOFTWARE_APP.AssemblyInfo.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\XamlC.stamp
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\bin\Release\netstandard2.1\APRSoftware.deps.json
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\bin\Release\netstandard2.1\APRSoftware.dll
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\bin\Release\netstandard2.1\ref\APRSoftware.dll
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\bin\Release\netstandard2.1\APRSoftware.pdb
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\APRSoftware.dll
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\ref\APRSoftware.dll
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\APRSoftware.pdb
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Release\netstandard2.1\General.css.g.cs

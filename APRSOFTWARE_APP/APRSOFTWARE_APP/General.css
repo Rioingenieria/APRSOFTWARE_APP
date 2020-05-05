@@ -1,0 +1,45 @@
+﻿^ContentPage {
+}
+
+.BtnGuardar {
+    background-color: #0098C9;
+    color: white;
+    border-radius: 20;
+    height: 50;
+    width: 187;
+    font-size: 15;
+}
+
+.conexion_entry {
+    background-color: #79AB3A;
+    text-align: center;
+    color: white;
+}
+
+.conexion_label {
+    font-size: 20;
+    color: white;
+    text-align: center;
+}
+
+.General_BtnGuardar {
+    background-color: #0098C9;
+    color: white;
+    border-radius: 20;
+    height: 40;
+}
+.Btn_sincronizar {
+    background-color: #0098C9;
+    color: white;
+    border-radius: 20;
+    height: 60;
+}
+
+.General_BtnVolver {
+    background-color: #79AB3A;
+    color: white;
+    border-radius: 20;
+    height: 40;
+    width: 187;
+    font-size: 15;
+}

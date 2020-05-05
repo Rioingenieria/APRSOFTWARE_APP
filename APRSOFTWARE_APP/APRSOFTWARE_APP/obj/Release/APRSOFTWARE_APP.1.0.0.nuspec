@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>APRSOFTWARE_APP</id>
+    <version>1.0.0</version>
+    <authors>APRSOFTWARE_APP</authors>
+    <owners>APRSOFTWARE_APP</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="System.Data.SqlClient" version="4.8.1" exclude="Build,Analyzers" />
+        <dependency id="Xamarin.Forms" version="4.5.0.617" exclude="Build,Analyzers" />
+        <dependency id="sqlite-net-pcl" version="1.6.292" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\bin\Release\netstandard2.1\APRSOFTWARE_APP.dll" target="lib\netstandard2.1\APRSOFTWARE_APP.dll" />
+  </files>
+</package>

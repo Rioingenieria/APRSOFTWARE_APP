@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APRSOFTWARE_APP.Conexion"
+             BackgroundColor="#000D1B">
+    <ContentPage.Resources>
+        <StyleSheet Source="General.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Padding="50,0,50,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" >
+                <Label Text="DIRECCIÓN IP" 
+                       FontFamily="Nexa"
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="192.192.100.8" 
+                        x:Name="txt_ip" 
+                        Keyboard="Telephone"                       
+                        StyleClass="conexion_entry" />
+            </StackLayout>
+            <StackLayout Grid.Row="2" >
+                <Label Text="NOMBRE BBDD"
+                       FontFamily="Nexa"
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="CAYUMAPU" 
+                       x:Name="txt_nombre_bd" 
+                       StyleClass="conexion_entry" />
+            </StackLayout>
+            <StackLayout Grid.Row="3" >
+                <Label Text="PUERTO"
+                       FontFamily="Nexa"                       
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="1433" 
+                       x:Name="txt_puerto" 
+                       Keyboard="Numeric"
+                       StyleClass="conexion_entry" />
+            </StackLayout>
+            <StackLayout Grid.Row="4" >
+                <Label Text="USUARIO"
+                       FontFamily="Nexa"
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="USUARIO"  
+                       x:Name="txt_usuario" 
+                       StyleClass="conexion_entry" />
+            </StackLayout>
+            <StackLayout Grid.Row="5" >
+                <Label Text="CONTRASEÑA"
+                       FontFamily="Nexa"
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="CONTRASEÑA" 
+                       x:Name="txt_contrasena" 
+                       StyleClass="conexion_entry" />
+            </StackLayout>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="GUARDAR" Grid.Column="0" 
+                        Clicked="btn_guardar_clicked" 
+                        FontFamily="Big"
+                        FontSize="20"
+                        StyleClass="General_BtnGuardar"/>
+                <Button Text="Volver" Grid.Column="2" 
+                        Clicked="btn_volver_clicked" 
+                        FontFamily="Big"
+                        FontSize="20"
+                        StyleClass="General_BtnVolver"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

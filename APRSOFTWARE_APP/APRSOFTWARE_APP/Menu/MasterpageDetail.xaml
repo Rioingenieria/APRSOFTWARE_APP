@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APRSOFTWARE_APP.MasterpageDetail"
+            BackgroundColor="#000D1B"
+             Title="APPRSoftware">
+    <ContentPage.Resources>
+        <StyleSheet Source="/General.css"/>
+    </ContentPage.Resources>
+    <StackLayout Padding="10">
+        <Label Text="BIENVENIDO"
+               
+               HorizontalOptions="CenterAndExpand"
+               TextColor="White"  
+               FontSize="50"            
+               FontFamily="Big">
+        </Label>
+        <Label Text="ALEXIS"
+               FontSize="35"
+               HorizontalOptions="CenterAndExpand"
+               TextColor="White"  
+               x:Name="lbl_usuario" 
+               FontFamily="Big">            
+        </Label>
+        <Image Source="logofondo.png"></Image>
+    </StackLayout>
+</ContentPage>
