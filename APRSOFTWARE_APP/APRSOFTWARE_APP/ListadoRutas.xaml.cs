@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace APRSOFTWARE_APP
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListadoRutas : ContentPage
     {
-        List<Ruta> Rutas_listados = new List<Ruta>();
+        ObservableCollection<Ruta> Rutas_listados = new ObservableCollection<Ruta>();
         int mes_numero;
         string mesnombre_anterior;
         string mesnombre_actual;
@@ -24,12 +25,15 @@ namespace APRSOFTWARE_APP
             InitializeComponent();
             anio.Text = DateTime.Now.Year.ToString();
             picker_mes.SelectedIndex = DateTime.Now.Month - 1;
-
+ 
         }
         private void btn_mostrar_Clicked(object sender, EventArgs e)
         {
+            Rutas_listados.Clear();
+            Rutas_listado.ItemsSource = Rutas_listados;
+                CargarRutas();
 
-                CargarRutas(); 
+            
        
         }
         private async void CargarRutas()
@@ -65,7 +69,7 @@ namespace APRSOFTWARE_APP
             {
                 foreach (var item in tabla_rutas)
                 {
-                    var clientes_por_ruta = Modulo.cnSqlite.Query<Clientes>("select*from clientes where nombre_ruta='" + item.nombre + "'");
+                    var clientes_por_ruta = Modulo.cnSqlite.Query<Clientes>("select*from clientes where nombre_ruta='" + item.nombre + "' and (estado='corte en tramite' or estado='activo')");
                     int cantidad_clientes_ruta = clientes_por_ruta.Count();
                     int contador = 0;
                     foreach (var cliente in clientes_por_ruta)
@@ -114,7 +118,13 @@ namespace APRSOFTWARE_APP
                 return;
             }
             Ruta ruta = e.SelectedItem as Ruta;
-            await Navigation.PushAsync(new Lectura_agregar(ruta.nombre_ruta.ToString(),mesnombre_actual,mesnombre_anterior,anioo_anterior,fecha_actual,anioo_actual));
+            Modulo.NombreRuta = ruta.nombre_ruta.ToString();
+            Modulo.MesNombreActual = mesnombre_actual;
+            Modulo.MesNombreAnterior = mesnombre_anterior;
+            Modulo.AnioActual = anioo_actual;
+            Modulo.AnioAnterior = anioo_anterior;
+            Modulo.FechaActual = fecha_actual;
+            await Navigation.PushAsync(new Lecturas_mainpage());
         }
 
         private void Rutas_listado_PropertyChanging(object sender, PropertyChangingEventArgs e)

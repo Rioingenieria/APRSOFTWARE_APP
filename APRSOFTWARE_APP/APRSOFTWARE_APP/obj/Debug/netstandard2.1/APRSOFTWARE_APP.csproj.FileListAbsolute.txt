@@ -8,6 +8,10 @@ C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\bin\Debu
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\App.xaml.g.cs
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\Conexion.xaml.g.cs
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\ImportarExportar.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\Lecturas_categorias\Lecturas_con_lectura.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\Lecturas_categorias\Lecturas_con_observacion.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\Lecturas_categorias\Lecturas_mainpage.xaml.g.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\Lecturas_categorias\Lecturas_sin_lectura.xaml.g.cs
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\Lectura_agregar.xaml.g.cs
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\ListadoRutas.xaml.g.cs
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\Login.xaml.g.cs

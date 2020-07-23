@@ -21,25 +21,65 @@ namespace APRSOFTWARE_APP
         int anio_anterior;
         int anio_actual;
         int id_lectura_app;
+        string tab;
         DateTime fecha_inicial_promedio;
         DateTime fecha_actual;
         string accion;
-        List<Clientes> clientes = new List<Clientes>();
-        public Lectura_agregar(string NombreRutaRecibido,string MesnombreActual,string MesnombreAnterior,int AnioAnterior,DateTime FechaActual,int AnioActual)
+        List<Lecturas_clientes> clientes = new List<Lecturas_clientes>();
+        public Lectura_agregar(int ClienteInicial,string Tab_Seleccionada)
         {
             InitializeComponent();
-            lbl_nombre_ruta.Text = NombreRutaRecibido;
-            mesanterior = MesnombreAnterior;
-            anio_anterior = AnioAnterior;
-            anio_actual = AnioActual;
-            mesactual = MesnombreActual;
-            clientes=Modulo.cnSqlite.Query<Clientes>("select*from clientes where nombre_ruta='" + NombreRutaRecibido + "' order by num_ruta asc");
+            lbl_nombre_ruta.Text = Modulo.NombreRuta;
+            mesanterior =Modulo.MesNombreAnterior;
+            anio_anterior = Modulo.AnioAnterior;
+            anio_actual = Modulo.AnioActual;
+            tab = Tab_Seleccionada;
+            mesactual = Modulo.MesNombreActual;
+            if (Tab_Seleccionada == "Con Lecturas")
+            {
+                clientes = Modulo.cnSqlite.Query<Lecturas_clientes>("select lecturas.mes,lecturas.id_cliente,lecturas.observacion,lecturas.anio,clientes.nombre,clientes.apellido,clientes.num_ruta,clientes.direccion,clientes.num_medidor,clientes.rut,clientes.estado from lecturas inner join clientes on lecturas.id_cliente=clientes.id_cliente where lecturas.mes='" + Modulo.MesNombreActual + "' and lecturas.anio='" + Modulo.AnioActual + "' and clientes.nombre_ruta='" + Modulo.NombreRuta + "' and (lecturas.observacion='Sin observacion' or lecturas.observacion is null) order by clientes.num_ruta asc");
+            }
+            else if (Tab_Seleccionada == "Con Observacion")
+            {
+                clientes = Modulo.cnSqlite.Query<Lecturas_clientes>("select lecturas.mes,lecturas.id_cliente,lecturas.anio,clientes.nombre,clientes.apellido,clientes.num_ruta,clientes.direccion,clientes.num_medidor,clientes.rut,clientes.estado from lecturas inner join clientes on lecturas.id_cliente=clientes.id_cliente where lecturas.mes='" + Modulo.MesNombreActual + "' and lecturas.anio='" + Modulo.AnioActual + "' and clientes.nombre_ruta='" + Modulo.NombreRuta + "' and lecturas.observacion<>'Sin observacion' order by clientes.num_ruta asc");
+            }
+            else
+            {
+                //SELECIONAMOS CLIENTES DE LA RUTA PARA VERIFICAR CADA CLIENTE SI TIENE OBSERVACION O LECTURA YA INGRESADA  
+                List<Clientes> ClientesEnRuta = Modulo.cnSqlite.Query<Clientes>("select*from clientes where nombre_ruta='" + Modulo.NombreRuta + "' and (estado='corte en tramite' or estado='activo' or estado='cortado') order by num_ruta asc");
+                foreach (var Clientesruta in ClientesEnRuta)
+                {
+                    var ClientesConLectura = Modulo.cnSqlite.Query<Lecturas_clientes>("select lecturas.mes,lecturas.id_cliente,lecturas.anio,clientes.nombre,clientes.apellido,clientes.num_ruta,clientes.direccion,clientes.num_medidor,clientes.rut,clientes.estado from lecturas inner join clientes on lecturas.id_cliente=clientes.id_cliente where lecturas.mes='" + Modulo.MesNombreActual + "' and lecturas.anio='" + Modulo.AnioActual + "' and clientes.nombre_ruta='" + Modulo.NombreRuta + "' and lecturas.id_cliente='" + Clientesruta.id_cliente + "' and (lecturas.observacion='Sin observacion' or lecturas.observacion is null) order by clientes.num_ruta asc");
+                    if (ClientesConLectura.Count == 0)
+                    {
+                        Lecturas_clientes lc = new Lecturas_clientes
+                        {
+                            rut=Clientesruta.rut,
+                            nombre = Clientesruta.nombre, 
+                            apellido=Clientesruta.apellido,
+                            num_medidor = Clientesruta.num_medidor,
+                            num_ruta = Clientesruta.num_ruta,
+                            direccion = Clientesruta.direccion,
+                            id_cliente = Clientesruta.id_cliente,
+                            estado=Clientesruta.estado
+                        };
+                       clientes.Add(lc);
+                    }
+                }
+            }
             numero_clientes_en_ruta = clientes.Count();
-            fecha_actual = FechaActual;
-            indice = 0;
+            fecha_actual = Modulo.FechaActual;
+            int contador = -1;
+            foreach(var item in clientes)
+            {
+                contador += 1;
+                if (item.id_cliente==ClienteInicial)
+                {
+                    indice = contador;
+                }
+            }
             id_cliente = clientes[indice].id_cliente;
             CargarClienteEnPantalla();
-           
         }
         private void btn_left_Clicked(object sender, EventArgs e)
         {
@@ -83,32 +123,87 @@ namespace APRSOFTWARE_APP
             txt_promedio_consumo.Text = CalcularPromedio().ToString();
             txt_ultimo_consumo.Text = "0";
             lbl_estado_cliente.Text= clientes[indice].estado.ToString().ToUpper();
+            
             AsignarColorLabelEstadoCliente();
             ObtenerConsumoUltimoMes();
-            var consulta=Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where mes='" + mesactual + "' and anio='" + anio_actual + "' and id_cliente='" + clientes[indice].id_cliente.ToString() + "'");
-           if (consulta.Count() > 0)
+            if (tab == "Con Lecturas")
+            {
+                TabConLectura();
+            }
+            else if (tab == "Con Observacion")
+            {
+                TabConObservacion();
+            }
+            else
+            {
+                TabSinLectura();
+            }
+            }
+       private void TabConLectura()
+        {
+            var consulta = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where mes='" + mesactual + "' and anio='" + anio_actual + "' and id_cliente='" + clientes[indice].id_cliente.ToString() + "'");
+            if (consulta.Count() > 0)
             {
                 accion = "update";
                 txt_lectura_anterior.Text = consulta[0].lectura_anterior.ToString();
                 txt_lectura_actual.Text = consulta[0].lectura_actual.ToString();
-                txt_consumo_actual.Text= consulta[0].consumo.ToString();
+                txt_consumo_actual.Text = consulta[0].consumo.ToString();
                 id_lectura_app = consulta[0].id_lectura_app;
+                picker_observacion.SelectedItem= consulta[0].observacion.ToString();
+            }   
+        }
+        private void TabConObservacion()
+        {
+            var consulta = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where mes='" + mesactual + "' and anio='" + anio_actual + "' and id_cliente='" + clientes[indice].id_cliente.ToString() + "'");
+            if (consulta.Count() > 0)
+            {
+                accion = "update";
+                txt_lectura_anterior.Text = consulta[0].lectura_anterior.ToString();
+                if (consulta[0].lectura_actual==null)
+                {
+                    txt_lectura_actual.Text = "";
+                }
+                else
+                {
+                    txt_lectura_actual.Text = consulta[0].lectura_actual.ToString();
+                }
+                if (consulta[0].consumo == null)
+                {
+                    txt_consumo_actual.Text = "";
+                }
+                else
+                {
+                    txt_consumo_actual.Text = consulta[0].consumo.ToString();
+                }
+              
+                id_lectura_app = consulta[0].id_lectura_app;
+                picker_observacion.SelectedItem = consulta[0].observacion;
+            }
+        }
+        private void TabSinLectura()
+        {
+            
+            var datos_anteriores = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where mes='" + mesanterior + "' and anio='" + anio_anterior + "' and id_cliente='" + clientes[indice].id_cliente.ToString() + "'");
+            if (datos_anteriores.Count() > 0)
+            {
+                txt_lectura_anterior.Text = datos_anteriores[0].lectura_actual.ToString();
+            }
+            else
+            {
+                txt_lectura_anterior.Text = "0";
+            }
+            var consulta = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where mes='" + mesactual + "' and anio='" + anio_actual + "' and id_cliente='" + clientes[indice].id_cliente.ToString() + "'");
+            if (consulta.Count>0)
+            {
+                accion = "update";
+                picker_observacion.SelectedItem = consulta[0].observacion.ToString();
             }
             else
             {
                 accion = "insert";
-                var datos_anteriores = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where mes='" + mesanterior + "' and anio='" + anio_anterior + "' and id_cliente='" + clientes[indice].id_cliente.ToString() + "'");
-                if (datos_anteriores.Count() > 0)
-                {
-                    txt_lectura_anterior.Text = datos_anteriores[0].lectura_actual.ToString();
-                }
-                else
-                {
-                    txt_lectura_anterior.Text = "0";
-                }
-
+                picker_observacion.SelectedIndex = 0;
             }
-           
+            
         }
         private void ObtenerConsumoUltimoMes()
         {
@@ -142,10 +237,10 @@ namespace APRSOFTWARE_APP
             decimal promedio=0;
             int contador=0;
             fecha_inicial_promedio = fecha_actual.AddMonths(-6);
-            var lecturas=Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where id_cliente='"+ clientes[indice].id_cliente + "' and fecha<'"+fecha_actual+"' and fecha>='"+fecha_inicial_promedio+"' order by fecha asc");
+            var lecturas=Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where id_cliente='"+ clientes[indice].id_cliente + "' and fecha<'"+fecha_actual+"' and fecha>='"+fecha_inicial_promedio+"' and consumo is not null order by fecha asc");
             foreach (var item in lecturas)
             {
-                promedio =promedio+ item.consumo;
+                promedio =promedio+ Convert.ToDecimal( item.consumo);
                 contador +=1;
             }
             if (contador == 0)
@@ -161,7 +256,7 @@ namespace APRSOFTWARE_APP
             double promedio = double.Parse(txt_promedio_consumo.Text);
             double varianza;
             return promedio;
-            var lecturas = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where id_cliente='" + clientes[indice].id_cliente + "' and fecha<'" + fecha_actual + "' and fecha>='" + fecha_inicial_promedio + "' order by fecha asc");
+            var lecturas = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where id_cliente='" + clientes[indice].id_cliente + "' and fecha<'" + fecha_actual + "' and fecha>='" + fecha_inicial_promedio + "' and consumo is not null order by fecha asc");
             int numero_muestra = 0;
             double sumatoria = 0;
             foreach (var item in lecturas)
@@ -175,6 +270,18 @@ namespace APRSOFTWARE_APP
         }
         private  void InsertarLectura()
         {
+            decimal? lectura_actual;
+            decimal? consumo;
+            if (string.IsNullOrEmpty(txt_consumo_actual.Text))
+            {
+                lectura_actual = null;
+                consumo = null;
+            }
+            else
+            {
+                lectura_actual = decimal.Parse(txt_lectura_actual.Text);
+                consumo = decimal.Parse(txt_consumo_actual.Text);
+            }
             Lecturas lectura = new Lecturas()
             {
                 id_cliente = clientes[indice].id_cliente,
@@ -184,15 +291,58 @@ namespace APRSOFTWARE_APP
                 mes = mesactual,
                 anio=anio_actual,
                 lectura_anterior=decimal.Parse(txt_lectura_anterior.Text),
-                lectura_actual=decimal.Parse(txt_lectura_actual.Text),
-                consumo=decimal.Parse(txt_consumo_actual.Text),
-                promedio=0,
-                observacion=""
+                lectura_actual=lectura_actual,
+                consumo=consumo,
+                promedio= decimal.Parse(txt_promedio_consumo.Text),
+                observacion = picker_observacion.SelectedItem.ToString()
+            };
+            Modulo.cnSqlite.Insert(lectura);
+        }
+        private void InsertarObservacion()
+        {
+            decimal? lectura_actual;
+            decimal? consumo;
+            if (string.IsNullOrEmpty(txt_consumo_actual.Text))
+            {
+                lectura_actual = null;
+                consumo = null;
+            }
+            else
+            {
+                lectura_actual = decimal.Parse(txt_lectura_actual.Text);
+                consumo = decimal.Parse(txt_consumo_actual.Text);
+            }
+
+            Lecturas lectura = new Lecturas()
+            {
+                id_cliente = clientes[indice].id_cliente,
+                nombre = clientes[indice].nombre,
+                fecha = fecha_actual,
+                fecha_toma = DateTime.Now,
+                mes = mesactual,
+                anio = anio_actual,
+                lectura_anterior = decimal.Parse(txt_lectura_anterior.Text),
+                lectura_actual =lectura_actual,
+                consumo = consumo,
+                promedio = decimal.Parse(txt_promedio_consumo.Text),
+                observacion = picker_observacion.SelectedItem.ToString()
             };
             Modulo.cnSqlite.Insert(lectura);
         }
         private void ActualizarLectura()
         {
+            decimal? lectura_actual;
+            decimal? consumo;
+            if (string.IsNullOrEmpty(txt_consumo_actual.Text))
+            {
+                lectura_actual = null;
+                consumo = null;
+            }
+            else
+            {
+                lectura_actual = decimal.Parse(txt_lectura_actual.Text);
+                consumo = decimal.Parse(txt_consumo_actual.Text);
+            }
             Lecturas lectura = new Lecturas()
             {
                 id_cliente = clientes[indice].id_cliente,
@@ -201,12 +351,17 @@ namespace APRSOFTWARE_APP
                 mes = mesactual,
                 anio = anio_actual,
                 lectura_anterior = decimal.Parse(txt_lectura_anterior.Text),
-                lectura_actual = decimal.Parse(txt_lectura_actual.Text),
-                consumo = decimal.Parse(txt_consumo_actual.Text),
-                promedio = 0,
-                observacion = ""
+                lectura_actual = lectura_actual,
+                consumo = consumo,
+                promedio = decimal.Parse(txt_promedio_consumo.Text),
+                observacion = picker_observacion.SelectedItem.ToString()
             };
             Modulo.cnSqlite.Query<Lecturas>("update lecturas set id_cliente='"+lectura.id_cliente+"',nombre='" + lectura.nombre+"',fecha_toma='" + lectura.fecha_toma+"',mes='" + lectura.mes+"',anio='" + lectura.anio+"',lectura_anterior='" + lectura.lectura_anterior+"',lectura_actual='" + lectura.lectura_actual+"',consumo='" + lectura.consumo+"',promedio='" + lectura.promedio+"',observacion='" + lectura.observacion+"' where id_lectura_app='"+id_lectura_app+"'");      
+        }
+        private void ActualizarObservacion()
+        {
+
+            Modulo.cnSqlite.Query<Lecturas>("update lecturas set observacion='" + picker_observacion.SelectedItem.ToString() + "' where id_lectura_app='" + id_lectura_app + "'");
         }
         private void txt_lectura_actual_Unfocused(object sender, FocusEventArgs e)
         {
@@ -226,40 +381,48 @@ namespace APRSOFTWARE_APP
                     return;
                 }
                 txt_consumo_actual.Text = consumo.ToString();
-                RegistrarLectura();
+                picker_observacion.SelectedItem = "Sin observacion";
+                RegistrarLectura("lectura");
+                
             }
             catch
             {
                 DisplayAlert("Informacion", "Formatos de lecturas incorrectos.", "ACEPTAR");
             }
             
-        }    
-        private void RegistrarLectura()
+        }
+        private void RegistrarLectura(string tipo)
         {
-            if (string.IsNullOrEmpty(txt_lectura_anterior.Text))
+            if (tipo=="lectura")
             {
-                DisplayAlert("Informacion", "No existe lectura anterior ingresada.", "ACEPTAR");
-                return;
+                if (string.IsNullOrEmpty(txt_lectura_anterior.Text))
+                {
+                    DisplayAlert("Informacion", "No existe lectura anterior ingresada.", "ACEPTAR");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txt_lectura_actual.Text))
+                {
+                    DisplayAlert("Informacion", "No existe lectura actual ingresada.", "ACEPTAR");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txt_consumo_actual.Text))
+                {
+                    DisplayAlert("Informacion", "No existe consumo calculado.", "ACEPTAR");
+                    return;
+                }
             }
-            if (string.IsNullOrEmpty(txt_lectura_actual.Text))
-            {
-                DisplayAlert("Informacion", "No existe lectura actual ingresada.", "ACEPTAR");
-                return;
-            }
-            if (string.IsNullOrEmpty(txt_consumo_actual.Text))
-            {
-                DisplayAlert("Informacion", "No existe consumo calculado.", "ACEPTAR");
-                return;
-            }
+            
             if (accion == "insert")
             {
-               // DisplayAlert("Informacion", CalcularVarianza().ToString(), "ACEPTAR");
+                // DisplayAlert("Informacion", CalcularVarianza().ToString(), "ACEPTAR");
                 InsertarLectura();
             }
             else
             {
                 //DisplayAlert("Informacion", CalcularVarianza().ToString(), "ACEPTAR");
                 ActualizarLectura();
+
+
             }
         }
 
@@ -278,6 +441,15 @@ namespace APRSOFTWARE_APP
                 {
                     Avanzar();
                 }                   
+        }
+ 
+        private void picker_observacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (picker_observacion.SelectedIndex>0)
+            {
+                RegistrarLectura("observacion");
+            }
+          
         }
     }
 }

@@ -17,8 +17,8 @@ namespace APRSOFTWARE_APP
         public string mes { get; set; }
         public int anio { get; set; }   
         public decimal lectura_anterior { get; set; }
-        public decimal lectura_actual { get; set; }
-        public decimal consumo { get; set; }
+        public decimal? lectura_actual { get; set; }
+        public decimal? consumo { get; set; }
         public decimal promedio { get; set; }      
         public string observacion { get; set; }
     }

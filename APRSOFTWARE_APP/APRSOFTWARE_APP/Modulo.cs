@@ -24,7 +24,14 @@ namespace APRSOFTWARE_APP
         public static int id_usuario;
         public static string nombre_operador;
         public static string apellido_operador;
-        public static bool ProbarConexionSQLServer(string ip, string puerto, string usuariobd, string contrasenabd, string nombrebd)
+        //VARIABLES LECTURAS Y RUTAS GLOBAL
+        public static string NombreRuta;
+        public static string MesNombreActual;
+        public static string MesNombreAnterior;
+        public static int AnioAnterior;
+        public static int AnioActual;
+        public static DateTime FechaActual;
+        public static bool ProbarConexionSQLServer(string ip, string puerto, string usuariobd, string contrasenabd, string nombrebd)     
         {
             cnSqlserver = new SqlConnection("Data source='" + ip + "'; initial catalog='" + nombrebd + "'; User id='" + usuariobd + "'; password='" + contrasenabd + "';");          
 
@@ -93,5 +100,8 @@ namespace APRSOFTWARE_APP
             }
             cnSqlserver.Close();
         }
+     
+
+
     }
 }

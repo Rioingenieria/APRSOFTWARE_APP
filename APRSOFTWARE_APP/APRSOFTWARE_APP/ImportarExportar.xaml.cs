@@ -72,7 +72,7 @@ namespace APRSOFTWARE_APP
                 Modulo.cnSqlserver.Open();
                 foreach (var fila in lecturas_local)
                 {
-                    SqlDataAdapter dalectura = new SqlDataAdapter("select*from lecturas where mes='" + picker_mes.SelectedItem.ToString() + "' and año='" + anio.Text.ToString() + "' and id_cliente='" + fila.id_cliente + "'", Modulo.cnSqlserver);
+                    SqlDataAdapter dalectura = new SqlDataAdapter("select*from lecturas where mes='" + picker_mes.SelectedItem.ToString() + "' and año='" + anio.Text.ToString() + "' and id_cliente='" + fila.id_cliente + "' and consumo is not null", Modulo.cnSqlserver);
                     DataTable dtlectura = new DataTable();
                     dalectura.Fill(dtlectura);
                     if (dtlectura.Rows.Count > 0)
@@ -81,14 +81,18 @@ namespace APRSOFTWARE_APP
                     }
                     else
                     {
-                        SqlCommand insertar_lecturas = new SqlCommand("insert into lecturas(id_cliente,lectura_anterior,lectura_actual,fecha_toma,mes,año)values(@id_cliente,@lectura_anterior,@lectura_actual,@fecha_toma,@mes,@año)", Modulo.cnSqlserver);
+                        SqlCommand insertar_lecturas = new SqlCommand("insert into lecturas(id_cliente,lectura_anterior,lectura_actual,fecha_toma,mes,año,abono,estado,observacion,convenio)values(@id_cliente,@lectura_anterior,@lectura_actual,@fecha_toma,@mes,@año,@abono,@estado,@observacion,@convenio)", Modulo.cnSqlserver);
                         insertar_lecturas.Parameters.AddWithValue("@id_cliente", fila.id_cliente);
                         insertar_lecturas.Parameters.AddWithValue("@lectura_anterior", fila.lectura_anterior);
                         insertar_lecturas.Parameters.AddWithValue("@lectura_actual", fila.lectura_actual);
                         insertar_lecturas.Parameters.AddWithValue("@fecha_toma", fila.fecha_toma.ToString("yyyyMMdd"));
                         insertar_lecturas.Parameters.AddWithValue("@mes", picker_mes.SelectedItem.ToString());
                         insertar_lecturas.Parameters.AddWithValue("@año", int.Parse(anio.Text.ToString()));
-                        insertar_lecturas.ExecuteNonQuery();
+                        insertar_lecturas.Parameters.AddWithValue("@abono", 0);
+                        insertar_lecturas.Parameters.AddWithValue("@estado", "pendiente");
+                        insertar_lecturas.Parameters.AddWithValue("@observacion", fila.observacion);
+                    insertar_lecturas.Parameters.AddWithValue("@convenio", 0);
+                    insertar_lecturas.ExecuteNonQuery();
                     }
 
                 }

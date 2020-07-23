@@ -42,7 +42,7 @@
                              Grid.Column="1"
                              HeightRequest="2" 
                              VerticalOptions="CenterAndExpand"
-                             Color="#0098C9">   
+                             Color="#C0CD29">
                     </BoxView>
                     <Label Grid.Row="3"
                            Grid.Column="1"
@@ -57,7 +57,7 @@
                     <BoxView Grid.Row="4"
                              Grid.Column="1"
                              HeightRequest="2" 
-                             Color="#0098C9">
+                             Color="#C0CD29">
                     </BoxView>
                     <Label Grid.Row="5"
                            Grid.Column="1"
@@ -72,7 +72,7 @@
                     <BoxView Grid.Row="6"
                              Grid.Column="1"
                              HeightRequest="2" 
-                             Color="#0098C9">
+                             Color="#C0CD29">
                     </BoxView>
                 </Grid>
             </StackLayout>
@@ -91,6 +91,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="2" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="1.5*" />
                     </Grid.RowDefinitions>
@@ -170,7 +171,7 @@
                              Margin="10,0,10,0"
                              VerticalOptions="Start" 
                              HeightRequest="2" 
-                             Color="#0098C9">
+                             Color="#C0CD29">
                     </BoxView>
                     <Label Text="Promedio Consumo" 
                        TextColor="White"
@@ -203,7 +204,7 @@
                              Margin="10,0,10,0"
                              VerticalOptions="Start" 
                              HeightRequest="2" 
-                             Color="#0098C9">
+                             Color="#C0CD29">
                     </BoxView>
                     <Label Text="Lectura anterior" 
                        TextColor="White"
@@ -237,7 +238,7 @@
                              Margin="10,0,10,0"
                              VerticalOptions="Start" 
                              HeightRequest="2" 
-                             Color="#0098C9">
+                             Color="#C0CD29">
                     </BoxView>
                     <Label Text="Consumo actual" 
                        TextColor="White"
@@ -252,8 +253,34 @@
                            Keyboard="Numeric"
                        StyleClass="conexion_entry">
                     </Entry>
+                    <Label Text="Observacion" 
+                       TextColor="White"
+                       FontFamily="Nexa"   
+                       VerticalOptions="Center"
+                       FontSize="20"
+                       Grid.Column="1"
+                       Grid.Row="13">
+                    </Label>
+                    <Picker x:Name="picker_observacion" 
+                        SelectedIndexChanged="picker_observacion_SelectedIndexChanged"
+                        TextColor="White"
+                        TitleColor="White"
+                        Grid.Row="13"
+                        BackgroundColor="#79AB3A"                           
+                        Grid.Column="2"                           
+                        Title="Sin observacion">                       
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Sin observacion</x:String>
+                                <x:String>Casa cerrada</x:String>
+                                <x:String>Perros en casa</x:String>
+                                <x:String>Lectura enviada</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                  
                     <StackLayout Grid.ColumnSpan="4"
-                                 Grid.Row="13">
+                                 Grid.Row="15">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
@@ -280,6 +307,7 @@
                                     Clicked="btn_pendientes_Clicked"
                                     Grid.Column="2"
                                     Text="Ir a pendientes"
+                                    IsVisible="False"
                                     Grid.Row="1"
                                     VerticalOptions="Center"
                                     StyleClass="General_BtnGuardar">
