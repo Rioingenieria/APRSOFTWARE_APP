@@ -29,24 +29,15 @@ namespace APRSOFTWARE_APP
         }
         private void btn_mostrar_Clicked(object sender, EventArgs e)
         {
-            Rutas_listados.Clear();
-            Rutas_listado.ItemsSource = Rutas_listados;
-                CargarRutas();
-
-            
-       
-        }
-        private async void CargarRutas()
-            {
             anioo_actual = int.Parse(anio.Text);
             mes_numero = picker_mes.SelectedIndex;
             mesnombre_actual = picker_mes.SelectedItem.ToString();
-           
+
             if (mes_numero == 0)
             {
                 mesnombre_anterior = "diciembre";
                 mes_numero = 12;
-                anioo_anterior -= 1;
+                anioo_anterior=anioo_actual-1;
             }
             else
             {
@@ -56,7 +47,24 @@ namespace APRSOFTWARE_APP
                 mes_numero += 1;
                 anioo_anterior = anioo_actual;
             }
-            fecha_actual = new DateTime(anioo_actual, mes_numero, 05);
+            fecha_actual = new DateTime(anioo_actual, mes_numero, 1);
+            DateTime FechaAnterior = fecha_actual.AddMonths(-1);
+            int idglobal =Modulo.GetIdAPR();
+          // DateTime UltimaFecha=Modulo.GetUltimaFechaSincronizacion(idglobal);
+           // if (UltimaFecha.Month>=FechaAnterior.Month && UltimaFecha.Year>=FechaAnterior.Year)
+            //{
+            //    DisplayAlert("Informacion", "Antes debe sincronizar la APP desde APRSoftware.", "ACEPTAR");
+           // }
+           // else 
+           // {
+                Rutas_listados.Clear();
+                Rutas_listado.ItemsSource = Rutas_listados;
+                CargarRutas();
+           // }           
+       
+        }
+        private async void CargarRutas()
+            {         
             var tabla_lecturas = Modulo.cnSqlite.Query<Lecturas>("select*from lecturas where mes='" + mesnombre_anterior + "' and anio='" + anioo_anterior + "'");
             if (tabla_lecturas.Count() == 0)
             {
@@ -69,7 +77,7 @@ namespace APRSOFTWARE_APP
             {
                 foreach (var item in tabla_rutas)
                 {
-                    var clientes_por_ruta = Modulo.cnSqlite.Query<Clientes>("select*from clientes where nombre_ruta='" + item.nombre + "' and (estado='corte en tramite' or estado='activo')");
+                    var clientes_por_ruta = Modulo.cnSqlite.Query<Clientes>("select*from clientes where nombre_ruta=? and (estado='corte en tramite' or estado='activo')",item.nombre);
                     int cantidad_clientes_ruta = clientes_por_ruta.Count();
                     int contador = 0;
                     foreach (var cliente in clientes_por_ruta)
@@ -78,13 +86,20 @@ namespace APRSOFTWARE_APP
                         if (lecturas_mes.Count() > 0)
                         {
                             contador += 1;
-                        }
+                        }   
                     }
                     int pendientes = cantidad_clientes_ruta - contador;
                     string mensaje;
                     if (pendientes == 0)
                     {
-                        mensaje = "Completada";
+                        if (contador==0)
+                        {
+                            mensaje = "Sin clientes";
+                        }
+                        else
+                        {
+                            mensaje = "Completada";
+                        }                        
                     }
                     else
                     {

@@ -16,11 +16,11 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10"/>
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="AUTO" />
                         <RowDefinition Height="2" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="AUTO" />
                         <RowDefinition Height="2" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="AUTO" />
                         <RowDefinition Height="2" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -32,10 +32,9 @@
                            Grid.Column="1"
                            Text="1234"
                            x:Name="lbl_nombre_ruta"
-                           FontFamily="Big"
                            HorizontalTextAlignment="Center"
                            VerticalOptions="CenterAndExpand"
-                           FontSize="30"
+                           
                            TextColor="White">
                     </Label>
                     <BoxView Grid.Row="2"
@@ -49,9 +48,8 @@
                             VerticalTextAlignment="Start"
                            Text="N en ruta:"
                            x:Name="lbl_numero_ruta"
-                           FontFamily="Big"
                            HorizontalTextAlignment="Center"
-                           FontSize="30"
+                           
                            TextColor="White">   
                     </Label>
                     <BoxView Grid.Row="4"
@@ -64,9 +62,8 @@
                            Text="Activo"
                            x:Name="lbl_estado_cliente"
                            VerticalTextAlignment="Start"
-                           FontFamily="Big"
                            HorizontalTextAlignment="Center"
-                           FontSize="30"
+                           
                            TextColor="White">
                     </Label>
                     <BoxView Grid.Row="6"
@@ -83,6 +80,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="2" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="2" />
                         <RowDefinition Height="*" />
@@ -90,10 +88,7 @@
                         <RowDefinition Height="2" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="2" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="1.5*" />
+                        <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
@@ -102,9 +97,8 @@
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="N servicio" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                       TextColor="White"                   
+                       FontSize="Medium"
                        Grid.Column="1"
                        Grid.Row="0">
                     </Label>
@@ -112,160 +106,136 @@
                        Grid.Row="0"
                        IsReadOnly="True"
                        x:Name="txt_numero_servicio"
-                       StyleClass="conexion_entry">
+                                  FontSize="Medium"
+                       StyleClass="conexion_entry_agregar">
                     </Entry>
                     <Label Text="Cliente" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                       TextColor="White"     
+                             FontSize="Medium"
                        Grid.Column="1"
                        Grid.Row="1">
                     </Label>
                     <Entry Grid.Column="2"
                        Grid.Row="1"
                        x:Name="txt_nombre"
+                             FontSize="Medium"
                        IsReadOnly="True"
-                       StyleClass="conexion_entry">
-                    </Entry>
-                    <Label Text="Rut" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                       StyleClass="conexion_entry_agregar">
+                    </Entry>        
+                    <Label Text="Direccion" 
+                       TextColor="White"                  
+                        FontSize="Medium"
                        Grid.Column="1"
                        Grid.Row="2">
                     </Label>
                     <Entry Grid.Column="2"
                        Grid.Row="2"
-                       x:Name="txt_rut"
                        IsReadOnly="True"
-                       StyleClass="conexion_entry">
+                       x:Name="txt_direccion"
+                            FontSize="Medium"
+                       StyleClass="conexion_entry_agregar">
                     </Entry>
-                    <Label Text="Direccion" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                    <Label Text="N medidor" 
+                       TextColor="White"                      
+                        FontSize="Medium"
                        Grid.Column="1"
                        Grid.Row="3">
                     </Label>
                     <Entry Grid.Column="2"
                        Grid.Row="3"
-                       IsReadOnly="True"
-                       x:Name="txt_direccion"
-                       StyleClass="conexion_entry">
-                    </Entry>
-                    <Label Text="N medidor" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
-                       Grid.Column="1"
-                       Grid.Row="4">
-                    </Label>
-                    <Entry Grid.Column="2"
-                       Grid.Row="4"
+                            FontSize="Medium"
                        IsReadOnly="True"
                        x:Name="txt_numero_medidor"
-                       StyleClass="conexion_entry">
+                       StyleClass="conexion_entry_agregar">
                     </Entry>
                     <BoxView Grid.ColumnSpan="4"
-                             Grid.Row="5"
+                             Grid.Row="4"
                              Margin="10,0,10,0"
                              VerticalOptions="Start" 
                              HeightRequest="2" 
                              Color="#C0CD29">
                     </BoxView>
-                    <Label Text="Promedio Consumo" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
-                       Grid.Column="1"
-                       Grid.Row="6">
-                    </Label>
-                    <Entry Grid.Column="2"
-                       Grid.Row="6"
-                       x:Name="txt_promedio_consumo"
-                       IsReadOnly="True"
-                       StyleClass="conexion_entry">
-                    </Entry>
                     <Label Text="Ultimo Consumo" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                       TextColor="White"                     
+                        FontSize="Medium"
                        Grid.Column="1"
-                       Grid.Row="7">
+                       Grid.Row="5">
                     </Label>
                     <Entry Grid.Column="2"
-                       Grid.Row="7"
+                       Grid.Row="5"
                        IsReadOnly="True"
+                            FontSize="Medium"
                        x:Name="txt_ultimo_consumo"
-                       StyleClass="conexion_entry">
+                       StyleClass="conexion_entry_agregar">
                     </Entry>
                     <BoxView Grid.ColumnSpan="4"
-                             Grid.Row="8"
+                             Grid.Row="6"
                              Margin="10,0,10,0"
                              VerticalOptions="Start" 
                              HeightRequest="2" 
                              Color="#C0CD29">
                     </BoxView>
                     <Label Text="Lectura anterior" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                       TextColor="White"                   
+                            FontSize="Medium"
                        Grid.Column="1"
-                       Grid.Row="9">
+                       Grid.Row="7">
                     </Label>
                     <Entry Grid.Column="2"
-                       Grid.Row="9"
+                       Grid.Row="7"
                        x:Name="txt_lectura_anterior"
+                           IsReadOnly="True"
+                                FontSize="Medium"
                            Keyboard="Telephone"
-                       StyleClass="conexion_entry">
+                       StyleClass="conexion_entry_agregar">
                     </Entry>
                     <Label Text="Lectura actual" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                       TextColor="White"                 
                        Grid.Column="1"
-                       Grid.Row="10">
+                           FontSize="Medium"
+                       Grid.Row="8">
                     </Label>
                     <Entry Grid.Column="2"
-                       Grid.Row="10"
+                       Grid.Row="8"
                        x:Name="txt_lectura_actual"
                        Keyboard="Telephone"
+                                FontSize="Medium"
                        Unfocused="txt_lectura_actual_Unfocused"
-                       StyleClass="conexion_entry">
+                       StyleClass="conexion_entry_agregar">
                     </Entry>
                     <BoxView Grid.ColumnSpan="4"
-                             Grid.Row="11"
+                             Grid.Row="9"
                              Margin="10,0,10,0"
                              VerticalOptions="Start" 
                              HeightRequest="2" 
                              Color="#C0CD29">
                     </BoxView>
                     <Label Text="Consumo actual" 
-                       TextColor="White"
-                       FontFamily="Nexa"                       
-                       FontSize="20"
+                       TextColor="White"                   
+                            FontSize="Medium"
                        Grid.Column="1"
-                       Grid.Row="12">
+                       Grid.Row="10">
                     </Label>
                     <Entry Grid.Column="2"
-                       Grid.Row="12"
+                       Grid.Row="10"
+                                FontSize="Medium"
                        x:Name="txt_consumo_actual"
-                           Keyboard="Numeric"
-                       StyleClass="conexion_entry">
+                       IsReadOnly="True"                           
+                       StyleClass="conexion_entry_agregar">
                     </Entry>
                     <Label Text="Observacion" 
-                       TextColor="White"
-                       FontFamily="Nexa"   
+                       TextColor="White"  
                        VerticalOptions="Center"
-                       FontSize="20"
+                        FontSize="Medium"
                        Grid.Column="1"
-                       Grid.Row="13">
+                       Grid.Row="11">
                     </Label>
                     <Picker x:Name="picker_observacion" 
                         SelectedIndexChanged="picker_observacion_SelectedIndexChanged"
                         TextColor="White"
                         TitleColor="White"
-                        Grid.Row="13"
+                       FontSize="Medium"
+                        Grid.Row="11"
                         BackgroundColor="#79AB3A"                           
                         Grid.Column="2"                           
                         Title="Sin observacion">                       
@@ -277,10 +247,10 @@
                                 <x:String>Lectura enviada</x:String>
                             </x:Array>
                         </Picker.ItemsSource>
-                    </Picker>
-                  
+                    </Picker>                  
                     <StackLayout Grid.ColumnSpan="4"
-                                 Grid.Row="15">
+                                 VerticalOptions="Center"
+                                 Grid.Row="12">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
@@ -294,7 +264,7 @@
                                 <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition Width="10"/>
                             </Grid.ColumnDefinitions>
-                            <Button ImageSource="left.png"
+                            <Button ImageSource="left_2.png"
                                     x:Name="btn_left"
                                     Clicked="btn_left_Clicked"
                                     Grid.Column="1"
@@ -303,16 +273,16 @@
                                     VerticalOptions="Center"
                                     BackgroundColor="Transparent">                            
                             </Button>
-                            <Button x:Name="btn_pendientes"
-                                    Clicked="btn_pendientes_Clicked"
+                            <Button x:Name="btn_volver"
+                                    Clicked="btn_volver_Clicked"
                                     Grid.Column="2"
-                                    Text="Ir a pendientes"
+                                    Text="Volver"
                                     IsVisible="False"
                                     Grid.Row="1"
                                     VerticalOptions="Center"
                                     StyleClass="General_BtnGuardar">
                             </Button>
-                            <Button ImageSource="right.png"
+                            <Button ImageSource="right_2.png"
                                     x:Name="btn_right"
                                     Clicked="btn_right_Clicked"
                                     Grid.Column="3"

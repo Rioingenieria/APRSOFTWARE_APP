@@ -20,9 +20,9 @@ namespace APRSOFTWARE_APP
         private void CurrentPageHasChanged(object sender, EventArgs e)
         {
             var tabbedPage = (TabbedPage)sender;
-            Title = tabbedPage.CurrentPage.Title;
-           
+            Title = tabbedPage.CurrentPage.Title;   
+        
         }
-
+      
     }
 }

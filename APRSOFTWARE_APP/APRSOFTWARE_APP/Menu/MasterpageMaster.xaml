@@ -19,7 +19,7 @@
            <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MasterpageMasterMenuItem}">
                     <local:MasterpageMasterMenuItem Title="Lecturas por rutas" IconSource="rutas.png" TargetType="{x:Type local:ListadoRutas}" />
-                    <local:MasterpageMasterMenuItem Title="Importar-Exportar" IconSource="importar.png" TargetType="{x:Type local:ImportarExportar}" />
+                    <local:MasterpageMasterMenuItem Title="Exportar" IconSource="importar.png" TargetType="{x:Type local:ImportarExportar}" />
                     <local:MasterpageMasterMenuItem Title="Sincronizar" IconSource="sincronizar.png" TargetType="{x:Type local:Sincronizar}" />
                 </x:Array>
            </ListView.ItemsSource>

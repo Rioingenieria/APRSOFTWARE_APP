@@ -17,13 +17,12 @@ namespace APRSOFTWARE_APP.Lecturas_categorias
         {
             InitializeComponent();
             lbl_titulo_ruta.Text = Modulo.NombreRuta;
-            CargarClientesConObservacion();
-        } 
-        private void Clientes_listado_PropertyChanging(object sender, PropertyChangingEventArgs e)
-        {
-
         }
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            CargarClientesConObservacion();
+        }
         private async void Clientes_listado_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)

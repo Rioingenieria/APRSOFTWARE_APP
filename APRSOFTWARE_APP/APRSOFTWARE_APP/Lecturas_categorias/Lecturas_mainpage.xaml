@@ -7,9 +7,8 @@
              mc:Ignorable="d"
              x:Class="APRSOFTWARE_APP.Lecturas_mainpage"
             Title="Volver a rutas">
-
+    <local:Lecturas_sin_lectura/>
     <local:Lecturas_con_lectura/>    
-    <local:Lecturas_con_observacion/>
-    <local:Lecturas_sin_lectura/>    
+    <local:Lecturas_con_observacion/>     
   
 </TabbedPage>

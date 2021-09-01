@@ -18,17 +18,30 @@
            HorizontalOptions="Center" 
            FontFamily="Big"
                    TextColor="White"
-           FontSize="35"/>
+           FontSize="30"/>
+            <Label x:Name="lbl_identificador" 
+                        Text="{Binding num_ruta}"  
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" 
+                   TextColor="White"
+           FontSize="2"/>
             <BoxView         HeightRequest="2" 
                              VerticalOptions="CenterAndExpand"
                              Color="#0098C9">
             </BoxView>
+            <SearchBar x:Name="barra_busqueda"
+                       TextChanged="barra_busqueda_TextChanged"
+                       BackgroundColor="#C0CD29"
+                       PlaceholderColor="White"
+                       CancelButtonColor="White"
+                       TextColor="White"/>
             <ListView x:Name="Clientes_listado"
-                      PropertyChanging="Clientes_listado_PropertyChanging"
                       SeparatorVisibility="Default" 
-                      ItemSelected="Clientes_listado_ItemSelected"
+                    ItemTapped="Clientes_listado_ItemTapped_1"
                       HasUnevenRows="True"
-                      SeparatorColor="#C0CD29">
+                      SelectionMode="None"                      
+                      SeparatorColor="#C0CD29"
+                      ItemsSource="{Binding Listado_clientes}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -49,12 +62,12 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Text="Nº Ruta:"
                                    x:Name="lbl_ruta"
-                                   FontFamily="Nexa"
+                                  
                                    Grid.Row="0"
                                    VerticalTextAlignment="Center"
                                    HorizontalOptions="StartAndExpand"
                                    TextColor="White"
-                                   FontSize="20"
+                                   FontSize="Small"
                                    Grid.Column="1">
                                 </Label>
                                 <Entry x:Name="numero_ruta"
@@ -62,23 +75,21 @@
                                        Grid.Row="0"
                                        Grid.Column="2"
                                        VerticalTextAlignment="Center"
-                                       Text="{Binding num_ruta, Mode=TwoWay}" 
-                                       FontFamily="Nexa"
+                                       Text="{Binding num_ruta}"                                       
                                        TextColor="White"    
                                        IsReadOnly="True"
                                        Focused="numero_ruta_Focused"
                                        StyleClass="conexion_entry"
-                                       d:Text="{Binding .}"
-                                       FontSize="20">
+                                       FontSize="Small">
                                 </Entry>
                                 <Label Text="Nº med:"
-                                   FontFamily="Nexa"
+                                  
                                    x:Name="lbl_num_medidor"
                                    Grid.Row="0"
                                    VerticalTextAlignment="Center"
                                    HorizontalOptions="StartAndExpand"
                                    TextColor="White"
-                                   FontSize="20"
+                                   FontSize="Small"
                                    Grid.Column="3">
                                 </Label>
                                 <Entry x:Name="numero_medidor"
@@ -86,23 +97,22 @@
                                        Grid.Column="4"
                                        VerticalTextAlignment="Center"
                                
-                                       Text="{Binding num_medidor, Mode=TwoWay}" 
-                                       FontFamily="Nexa"
+                                       Text="{Binding num_medidor}" 
+                                      
                                        TextColor="White"
                                        IsReadOnly="True"
                                        Focused="numero_medidor_Focused"
                                        StyleClass="conexion_entry"
-                                       d:Text="{Binding .}"
-                                       FontSize="20">
+                                       FontSize="Small">
                                 </Entry>
                                 <Label Text="Nº Servicio:"
                                    x:Name="lbl_num_servicio"
-                                   FontFamily="Nexa"                                   
+                                                                     
                                    VerticalTextAlignment="Center"
                                    HorizontalOptions="StartAndExpand"
                                    Grid.Row="1"
                                    TextColor="White"
-                                   FontSize="20"
+                                   FontSize="Small"
                                    Grid.Column="1">
                                 </Label>
                                 <Entry x:Name="numero_servicio"
@@ -110,23 +120,20 @@
                                        Grid.Row="1"
                                        Grid.Column="2"
                                        VerticalTextAlignment="Center"
-                                       Text="{Binding id_cliente, Mode=TwoWay}" 
-                                       FontFamily="Nexa"
+                                       Text="{Binding id_cliente}"                                       
                                        TextColor="White"
                                        IsReadOnly="True"
                                        StyleClass="conexion_entry"
                                        Focused="numero_servicio_Focused"
-                                       d:Text="{Binding .}"
-                                       FontSize="20">
+                                       FontSize="Small">
                                 </Entry>
                                 <Label Text="Direccion:"
-                                   x:Name="lbl_direccion"
-                                   FontFamily="Nexa"                                   
+                                   x:Name="lbl_direccion"                                                                     
                                    VerticalTextAlignment="Center"
                                    HorizontalOptions="StartAndExpand"
                                    Grid.Row="1"
                                    TextColor="White"
-                                   FontSize="20"
+                                   FontSize="Small"
                                    Grid.Column="3">
                                 </Label>
                                 <Entry x:Name="direccion"
@@ -134,39 +141,33 @@
                                        Grid.Row="1"
                                        Grid.Column="4"
                                        VerticalTextAlignment="Center"
-                                       Text="{Binding direccion, Mode=TwoWay}" 
-                                       FontFamily="Nexa"
+                                       Text="{Binding direccion}"                                       
                                        TextColor="White"
                                        IsReadOnly="True"
                                        Focused="direccion_Focused"
                                        StyleClass="conexion_entry"
-                                       d:Text="{Binding .}"
-                                       FontSize="20">
+                                       FontSize="Small">
                                 </Entry>
                                 <Label Text="Nombre cliente:"
-                                   x:Name="lbl_nombre_cliente"
-                                   FontFamily="Nexa"                                   
+                                   x:Name="lbl_nombre_cliente"                                                                     
                                    VerticalTextAlignment="Center"
                                    HorizontalOptions="StartAndExpand"
                                    Grid.Row="2"
                                    TextColor="White"
-                                   FontSize="20"
+                                   FontSize="Small"
                                    Grid.Column="1">
                                 </Label>
-                                <Entry x:Name="nombre_cliente"
-                         
+                                <Entry x:Name="nombre_cliente"                         
                                        Grid.Row="2"
                                        Grid.Column="2"
                                        Grid.ColumnSpan="3"
                                        VerticalTextAlignment="Center"
-                                       Text="{Binding nombre, Mode=TwoWay}" 
-                                       FontFamily="Nexa"
+                                       Text="{Binding nombre}"                                       
                                        TextColor="White"    
                                        IsReadOnly="True"
                                        Focused="nombre_cliente_Focused"
-                                       d:Text="{Binding .}"
                                        StyleClass="conexion_entry"
-                                       FontSize="20">
+                                       FontSize="Small">
                                 </Entry>
 
                             </Grid>

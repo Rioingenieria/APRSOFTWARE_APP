@@ -15,13 +15,21 @@
     text-align: center;
     color: white;
 }
+.conexion_entry_agregar {
+    background-color: #79AB3A;
+    text-align: center;
+    font-size:12;
+    color: white;
+}
 
 .conexion_label {
     font-size: 20;
     color: white;
     text-align: center;
 }
-
+.label_titulo_agregar {
+    font-size: 17;
+}
 .General_BtnGuardar {
     background-color: #0098C9;
     color: white;

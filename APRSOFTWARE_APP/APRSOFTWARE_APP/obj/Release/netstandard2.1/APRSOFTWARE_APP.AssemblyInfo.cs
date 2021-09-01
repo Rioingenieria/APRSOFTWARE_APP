@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("APRSoftware")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("APPRSoftware")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("APRSoftware")]
-[assembly: System.Reflection.AssemblyTitleAttribute("APRSoftware")]
+[assembly: System.Reflection.AssemblyProductAttribute("APPRSoftware")]
+[assembly: System.Reflection.AssemblyTitleAttribute("APPRSoftware")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

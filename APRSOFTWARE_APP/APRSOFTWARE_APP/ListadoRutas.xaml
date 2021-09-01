@@ -27,9 +27,8 @@
                 <Label Grid.Row="1"
                        Grid.Column="1"
                        Text="LISTADO DE RUTAS"
-                       FontFamily="Big"
                        HorizontalTextAlignment="Center"
-                       FontSize="30"
+                       FontSize="Large"
                        FontAttributes="Bold"
                        TextColor="White">
                 </Label>
@@ -80,8 +79,7 @@
                     </Entry>
                     <Button Grid.Row="0"
                             StyleClass="General_BtnGuardar"
-                            FontFamily="Big"
-                            FontSize="20"
+                            FontSize="Small"
                             x:Name="btn_mostrar"
                             Clicked="btn_mostrar_Clicked"
                             Grid.Column="2"
@@ -120,11 +118,10 @@
                                        Grid.Column="1"
                                        VerticalTextAlignment="Center"
                                        Text="{Binding nombre_ruta, Mode=TwoWay}" 
-                                       FontFamily="Nexa"
                                        TextColor="White"
                                        Focused="titulo_ruta_Focused"
                                        d:Text="{Binding .}"
-                                       FontSize="20">
+                                       FontSize="Small">
                                 </Label>
                                 <Label x:Name="pendientes"
                                        Grid.Row="0"
@@ -132,11 +129,10 @@
                                        VerticalTextAlignment="Center"
                                        HorizontalOptions="StartAndExpand"
                                        Text="{Binding pendientes, Mode=TwoWay}" 
-                                       FontFamily="Nexa"
                                        TextColor="White"
                                        Focused="titulo_ruta_Focused"
                                        d:Text="{Binding .}"
-                                       FontSize="15">
+                                       FontSize="Small">
                                 </Label>
                                 <Image  Grid.Row="0"
                                         Grid.Column="3"

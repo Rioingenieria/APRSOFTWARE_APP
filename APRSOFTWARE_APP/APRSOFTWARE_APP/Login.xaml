@@ -43,13 +43,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="2" />
                         </Grid.ColumnDefinitions>
-                        <ImageButton Source="user.png" 
-                                     Grid.Column="9"
-
-                                     x:Name="usuario"
-                                     Clicked="usuario_Clicked"
-                                     BackgroundColor="Transparent">
-                        </ImageButton>
+                   
                         <ImageButton Source="config.png" 
                                      Grid.Column="11"
                                      Clicked="configuracion_Clicked"
@@ -70,15 +64,20 @@
                            HorizontalOptions="Center"
                            FontSize="25">
                     </Label>
-                    <Picker Title="Seleccionar Operador" 
-                            x:Name="picker_usuarios"        
-                            SelectedIndex="0" 
-                            Margin="20,0,20,0"
+
+                    <Picker x:Name="picker_usuarios" 
+                        SelectedIndexChanged="picker_usuarios_SelectedIndexChanged"
+                        TextColor="Black"
                             BackgroundColor="White"
-                            Opacity="0.5">
+                            Title="Seleccionar Operador"
+                        TitleColor="Black">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Usuario APR</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
                     </Picker>
                 </StackLayout>
-
                 <Button Clicked="btn_entrar_Clicked"
                         Text="Entrar" 
                         VerticalOptions="StartAndExpand"

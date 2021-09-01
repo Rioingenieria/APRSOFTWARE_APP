@@ -17,23 +17,16 @@ namespace APRSOFTWARE_APP.Lecturas_categorias
         {
             InitializeComponent();
             lbl_titulo_ruta.Text = Modulo.NombreRuta;
-            CargarClientesSinLectura();
+            BindingContext = new ViewModel.ClientesViewModel();
         }
-        private void Clientes_listado_PropertyChanging(object sender, PropertyChangingEventArgs e)
+        protected override void OnAppearing()
         {
+            base.OnAppearing();
+            BindingContext = new ViewModel.ClientesViewModel();
 
         }
 
-        private async void Clientes_listado_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null)
-            {
-                return;
-            }
-            Lecturas_clientes lc = e.SelectedItem as Lecturas_clientes;
-            await Navigation.PushAsync(new Lectura_agregar(lc.id_cliente, this.Title.ToString()));
-        }
-        void CargarClientesSinLectura()
+       public  void CargarClientesSinLectura()
         {
             //SELECIONAMOS CLIENTES DE LA RUTA PARA VERIFICAR CADA CLIENTE SI TIENE OBSERVACION O LECTURA YA INGRESADA  
            List<Clientes> ClientesEnRuta=Modulo.cnSqlite.Query<Clientes>("select*from clientes where nombre_ruta='"+Modulo.NombreRuta+"' and (estado='corte en tramite' or estado='activo' or estado='cortado') order by num_ruta asc");
@@ -60,7 +53,7 @@ namespace APRSOFTWARE_APP.Lecturas_categorias
         {
 
         }
-
+       
         private void nombre_cliente_Focused(object sender, FocusEventArgs e)
         {
 
@@ -79,6 +72,33 @@ namespace APRSOFTWARE_APP.Lecturas_categorias
         private void numero_servicio_Focused(object sender, FocusEventArgs e)
         {
 
+        }
+
+        private void Clientes_listado_ItemTapped_1(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+            {
+                return;
+            }
+            Lecturas_clientes lc = e.Item as Lecturas_clientes;
+           Navigation.PushAsync(new Lectura_agregar(lc.id_cliente, this.Title.ToString()));
+        }
+             private void barra_busqueda_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var contenedor = BindingContext as ViewModel.ClientesViewModel;
+            Clientes_listado.BeginRefresh();
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                Clientes_listado.ItemsSource = contenedor.Listado_clientes;
+            }
+            else
+            {
+                Clientes_listado.ItemsSource = contenedor.Listado_clientes.Where(x => x.nombre.ToLower().Contains(e.NewTextValue.ToLower()) || 
+                x.num_medidor.ToLower().Contains(e.NewTextValue.ToLower()) || 
+                x.direccion.ToLower().Contains(e.NewTextValue.ToLower()) ||
+                x.id_cliente.ToString().Contains(e.NewTextValue));
+            }
+            Clientes_listado.EndRefresh();
         }
     }
 }
