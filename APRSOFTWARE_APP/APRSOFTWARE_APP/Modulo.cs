@@ -10,7 +10,8 @@ namespace APRSOFTWARE_APP
     public class Modulo
     {
         public static SQLiteConnection cnSqlite = new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "APPRSoftware.db3"));
-        public static SqlConnection cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
+        //public static SqlConnection cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
+        public static SqlConnection cnSqlserver = new SqlConnection("Data Source=198.38.91.9;Initial Catalog=adminAPR_aprcomunidad_pruebas;User Id=adminAPR_rio_pruebas;Password=Rio20199!*;");
         public static int id_usuario;
         public static string nombre_operador = "USUARIO APR";
         public static string apellido_operador;
@@ -23,7 +24,8 @@ namespace APRSOFTWARE_APP
         public static DateTime FechaActual;
         public static bool CrearConexionSQLServer()
         {
-            cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
+            //cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
+            cnSqlserver = new SqlConnection("Data Source=198.38.91.9;Initial Catalog=adminAPR_aprcomunidad_pruebas;User Id=adminAPR_rio_pruebas;Password=Rio20199!*;");
             return true;
         }
         public static void VaciarTablas()
@@ -157,16 +159,16 @@ namespace APRSOFTWARE_APP
                         "estado=? " +
                         "where id_cliente=?",
                         dtclientes.Rows[i][1],
-                        dtclientes.Rows[i][2], 
-                        dtclientes.Rows[i][3], 
-                        dtclientes.Rows[i][4], 
+                        dtclientes.Rows[i][2],
+                        dtclientes.Rows[i][3],
+                        dtclientes.Rows[i][4],
                         dtclientes.Rows[i][5],
-                        dtclientes.Rows[i][6], 
-                        dtclientes.Rows[i][7], 
+                        dtclientes.Rows[i][6],
+                        dtclientes.Rows[i][7],
                         dtclientes.Rows[i][8],
-                        dtclientes.Rows[i][9], 
+                        dtclientes.Rows[i][9],
                         cliente_local[0].id_cliente);
-        }
+                }
                 else
                 {
                     cnSqlite.Query<Clientes>("insert into clientes(id_cliente,nombre,apellido,rut,direccion,num_medidor,id_ruta,nombre_ruta,num_ruta,estado) values (?,?,?,?,?,?,?,?,?,?)", dtclientes.Rows[i][0], dtclientes.Rows[i][1], dtclientes.Rows[i][2], dtclientes.Rows[i][3], dtclientes.Rows[i][4], dtclientes.Rows[i][5], dtclientes.Rows[i][6], dtclientes.Rows[i][7], dtclientes.Rows[i][8], dtclientes.Rows[i][9]);

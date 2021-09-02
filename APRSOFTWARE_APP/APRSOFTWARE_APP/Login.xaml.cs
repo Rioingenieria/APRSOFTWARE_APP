@@ -1,8 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Data;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
+
 namespace APRSOFTWARE_APP
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -12,6 +15,7 @@ namespace APRSOFTWARE_APP
         {
             InitializeComponent();
             Modulo.VerificarTablasBDSqlite();
+            lbl_version.Text ="V "+ $"{AppInfo.Version}";
         }
         private void configuracion_Clicked(object sender, EventArgs e)
         {

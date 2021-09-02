@@ -50,6 +50,7 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
                                     <RowDefinition Height="10"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
@@ -169,7 +170,18 @@
                                        StyleClass="conexion_entry"
                                        FontSize="Small">
                                 </Entry>
-
+                                <Label         
+                                    Padding="10"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="4"
+                                    Text="VER"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="Center"
+                                    BackgroundColor="#0098C9"
+                                    TextColor="White">
+                                    
+                                </Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

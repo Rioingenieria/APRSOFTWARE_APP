@@ -23,7 +23,7 @@ namespace APRSOFTWARE_APP.Lecturas_categorias
         {
             base.OnAppearing();
             BindingContext = new ViewModel.ClientesViewModel();
-
+      
         }
 
        public  void CargarClientesSinLectura()
@@ -99,6 +99,12 @@ namespace APRSOFTWARE_APP.Lecturas_categorias
                 x.id_cliente.ToString().Contains(e.NewTextValue));
             }
             Clientes_listado.EndRefresh();
+        }
+        
+        private void btn_ver_Clicked(object sender, EventArgs e)
+        {
+            string message= sender.ToString();
+            DisplayAlert("", "", "");
         }
     }
 }
