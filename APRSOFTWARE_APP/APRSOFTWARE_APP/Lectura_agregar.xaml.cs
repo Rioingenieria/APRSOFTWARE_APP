@@ -96,27 +96,34 @@ namespace APRSOFTWARE_APP
         }
         private void Retroceder()
         {
-            if (clientes.Count() == 1 && txt_consumo_actual.Text.ToString() != string.Empty)
+            try
             {
-                RemoverClienteConLectura(indice);
-                DisplayAlert("Informacion", "Lecturas ingresadas completamente.", "Aceptar");
-                Navigation.PushAsync(new Lecturas_mainpage());
-                return;
-            }
-            if (txt_consumo_actual.Text.ToString() != string.Empty)
-            {
-                RemoverClienteConLectura(indice);
-                indice -= 1;
-            }
-            else
-            {
-                indice -= 1;
-                if (indice<0)
+                if (clientes.Count() == 1 && txt_consumo_actual.Text.ToString() != string.Empty)
                 {
-                    indice = clientes.Count()-1;
+                    RemoverClienteConLectura(indice);
+                    DisplayAlert("Información", "Lecturas ingresadas completamente.", "Aceptar");
+                    return;
                 }
+                if (txt_consumo_actual.Text.ToString() != string.Empty)
+                {
+                    RemoverClienteConLectura(indice);
+                    indice -= 1;
+                }
+                else
+                {
+                    indice -= 1;
+                    if (indice < 0)
+                    {
+                        indice = clientes.Count() - 1;
+                    }
+                }
+                CargarClienteEnPantalla(indice);
             }
-            CargarClienteEnPantalla(indice);
+            catch (Exception)
+            {
+
+            }
+            
         }
         private void RetrocederConLecturauObservacion()
         {
@@ -152,34 +159,41 @@ namespace APRSOFTWARE_APP
         }
         private void Avanzar()
         {
-            if (clientes.Count() == 1 && txt_consumo_actual.Text.ToString() != string.Empty)
+            try
             {
-                RemoverClienteConLectura(indice);
-                DisplayAlert("Informacion", "Lecturas ingresadas completamente.", "Aceptar");
-                Navigation.PushAsync(new Lecturas_mainpage());
-                return;
+                if (clientes.Count() == 1 && txt_consumo_actual.Text.ToString() != string.Empty)
+                {
+                    RemoverClienteConLectura(indice);
+                    DisplayAlert("Información", "Lecturas ingresadas completamente.", "Aceptar");
+                    return;
+                }
+                if (txt_consumo_actual.Text.ToString() != string.Empty)
+                {
+                    RemoverClienteConLectura(indice);
+                    if (clientes.Count() == 1)
+                    {
+                        indice = 0;
+                    }
+                    if (indice > clientes.Count() - 1)
+                    {
+                        indice = 0;
+                    }
+                }
+                else
+                {
+                    indice += 1;
+                    if (indice > clientes.Count() - 1)
+                    {
+                        indice = 0;
+                    }
+                }
+                CargarClienteEnPantalla(indice);
             }
-            if (txt_consumo_actual.Text.ToString() != string.Empty)
+            catch (Exception)
             {
-                RemoverClienteConLectura(indice);
-                if (clientes.Count() == 1)
-                {
-                    indice = 0;
-                }
-                if (indice > clientes.Count() - 1)
-                {
-                    indice = 0;
-                }
+
             }
-            else
-            {
-                indice += 1;
-                if (indice > clientes.Count() - 1)
-                {
-                    indice = 0;
-                }
-            }
-            CargarClienteEnPantalla(indice);           
+           
         }
         private void AvanzarConLecturauObservacion()
         {
@@ -452,7 +466,7 @@ namespace APRSOFTWARE_APP
                 }
                 if (string.IsNullOrEmpty(txt_lectura_anterior.Text))
                 {
-                    DisplayAlert("Informacion", "Campo lectura anterior esta vacio,", "ACEPTAR");
+                    DisplayAlert("Información", "Campo lectura anterior esta vacio,", "ACEPTAR");
                     return;
                 }
 
@@ -462,7 +476,7 @@ namespace APRSOFTWARE_APP
                 consumo = Math.Round(consumo, 2);
                 if (consumo < 0)
                 {
-                    DisplayAlert("Informacion", "Lectura actual debe ser mayor a lectura anterior.", "Aceptar");
+                    DisplayAlert("Información", "Lectura actual debe ser mayor a lectura anterior.", "Aceptar");
                     txt_lectura_actual.Text = "";
                     return;
                 }
@@ -472,7 +486,7 @@ namespace APRSOFTWARE_APP
             }
             catch
             {
-                DisplayAlert("Informacion", "Formatos de lecturas incorrectos.", "ACEPTAR");
+                DisplayAlert("Información", "Formatos de lecturas incorrectos.", "ACEPTAR");
             }
         }
         private void RegistrarLectura(string tipo)
@@ -481,17 +495,17 @@ namespace APRSOFTWARE_APP
             {
                 if (string.IsNullOrEmpty(txt_lectura_anterior.Text))
                 {
-                    DisplayAlert("Informacion", "No existe lectura anterior ingresada.", "ACEPTAR");
+                    DisplayAlert("Información", "No existe lectura anterior ingresada.", "ACEPTAR");
                     return;
                 }
                 if (string.IsNullOrEmpty(txt_lectura_actual.Text))
                 {
-                    DisplayAlert("Informacion", "No existe lectura actual ingresada.", "ACEPTAR");
+                    DisplayAlert("Información", "No existe lectura actual ingresada.", "ACEPTAR");
                     return;
                 }
                 if (string.IsNullOrEmpty(txt_consumo_actual.Text))
                 {
-                    DisplayAlert("Informacion", "No existe consumo calculado.", "ACEPTAR");
+                    DisplayAlert("Información", "No existe consumo calculado.", "ACEPTAR");
                     return;
                 }
             }
@@ -512,14 +526,14 @@ namespace APRSOFTWARE_APP
             }
             if (accion == "insert")
             {
-                // DisplayAlert("Informacion", CalcularVarianza().ToString(), "ACEPTAR");
-                //  DisplayAlert("Informacion", "insert", "ACEPTAR");
+                // DisplayAlert("Información", CalcularVarianza().ToString(), "ACEPTAR");
+                //  DisplayAlert("Información", "insert", "ACEPTAR");
                 InsertarLectura();
             }
             else
             {
-                //DisplayAlert("Informacion", CalcularVarianza().ToString(), "ACEPTAR");
-                //DisplayAlert("Informacion","update", "ACEPTAR");
+                //DisplayAlert("Información", CalcularVarianza().ToString(), "ACEPTAR");
+                //DisplayAlert("Información","update", "ACEPTAR");
                 ActualizarLectura();
             }
         }
@@ -531,7 +545,7 @@ namespace APRSOFTWARE_APP
             contador += 1;
             if (contador > numero_clientes_en_ruta)
             {
-                DisplayAlert("Informacion", "Se ha recorrido completamente la ruta y no se encuentran clientes sin lectura pendiente.", "ACEPTAR");
+                DisplayAlert("Información", "Se ha recorrido completamente la ruta y no se encuentran clientes sin lectura pendiente.", "ACEPTAR");
                 return;
             }
 

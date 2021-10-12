@@ -1,4 +1,5 @@
 ﻿
+using Plugin.Connectivity;
 using SQLite;
 using System;
 using System.Data;
@@ -10,8 +11,8 @@ namespace APRSOFTWARE_APP
     public class Modulo
     {
         public static SQLiteConnection cnSqlite = new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "APPRSoftware.db3"));
-        //public static SqlConnection cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
-        public static SqlConnection cnSqlserver = new SqlConnection("Data Source=198.38.91.9;Initial Catalog=adminAPR_aprcomunidad_pruebas;User Id=adminAPR_rio_pruebas;Password=Rio20199!*;");
+        public static SqlConnection cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
+        //public static SqlConnection cnSqlserver = new SqlConnection("Data Source=198.38.91.9;Initial Catalog=adminAPR_aprcomunidad_pruebas;User Id=adminAPR_rio_pruebas;Password=Rio20199!*;");
         public static int id_usuario;
         public static string nombre_operador = "USUARIO APR";
         public static string apellido_operador;
@@ -24,8 +25,8 @@ namespace APRSOFTWARE_APP
         public static DateTime FechaActual;
         public static bool CrearConexionSQLServer()
         {
-            //cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
-            cnSqlserver = new SqlConnection("Data Source=198.38.91.9;Initial Catalog=adminAPR_aprcomunidad_pruebas;User Id=adminAPR_rio_pruebas;Password=Rio20199!*;");
+            cnSqlserver = new SqlConnection("Data Source=SQL5034.site4now.net;Initial Catalog=DB_A5734F_reducida;User Id=DB_A5734F_reducida_admin;Password=Reducida2019!;");
+            //cnSqlserver = new SqlConnection("Data Source=198.38.91.9;Initial Catalog=adminAPR_aprcomunidad_pruebas;User Id=adminAPR_rio_pruebas;Password=Rio20199!*;");
             return true;
         }
         public static void VaciarTablas()
@@ -75,6 +76,11 @@ namespace APRSOFTWARE_APP
             {
                 return false;
             }
+        }
+        public static bool CheckInternet()
+        {
+           bool IsInternet = CrossConnectivity.Current.IsConnected ? true : false;
+            return IsInternet;
         }
         public static void VerificarTablasBDSqlite()
         {
@@ -196,6 +202,7 @@ namespace APRSOFTWARE_APP
                 }
             }
         }
+
 
     }
 }

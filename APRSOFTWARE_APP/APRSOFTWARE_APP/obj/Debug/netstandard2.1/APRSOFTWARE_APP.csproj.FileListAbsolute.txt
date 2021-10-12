@@ -86,10 +86,10 @@ C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debu
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\General.css.g.cs
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APRSOFTWARE_APP.AssemblyInfoInputs.cache
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APRSOFTWARE_APP.AssemblyInfo.cs
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APRSOFTWARE_APP.csproj.CoreCompileInputs.cache
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\XamlC.stamp
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APRSOFTWARE_APP.csproj.CopyComplete
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APPRSoftware.dll
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\ref\APPRSoftware.dll
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APPRSoftware.pdb
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APRSOFTWARE_APP.csprojAssemblyReference.cache
-C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\APRSOFTWARE_APP.csproj.CoreCompileInputs.cache
-C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP\obj\Debug\netstandard2.1\XamlC.stamp

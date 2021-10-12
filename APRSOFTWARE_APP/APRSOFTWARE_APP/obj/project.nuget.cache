@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j+wwzObMtPTuPtBdVw12g/bucTbd9fpwFA+F5i/7X9TyNsgbTkEVXq5+ULoYbQzsm6G9e62Czngfm6EVyl37BA==",
+  "dgSpecHash": "WSJ4EfsELaRGK7E3IcSy6PMW9PJaAOgbIptfl3CjZfkRqvFrddqC8LUhPBK1QSRMOq3gs/cjFXKjYtGmTz+MTg==",
   "success": true,
   "projectFilePath": "C:\\Users\\v_13\\Documents\\APRSOFTWARE_APP\\APRSOFTWARE_APP\\APRSOFTWARE_APP\\APRSOFTWARE_APP.csproj",
   "expectedPackageFiles": [
@@ -93,6 +93,7 @@
     "C:\\Users\\v_13\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\v_13\\.nuget\\packages\\xam.plugin.connectivity\\3.2.0\\xam.plugin.connectivity.3.2.0.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\xamarin.forms\\4.5.0.617\\xamarin.forms.4.5.0.617.nupkg.sha512"
   ],

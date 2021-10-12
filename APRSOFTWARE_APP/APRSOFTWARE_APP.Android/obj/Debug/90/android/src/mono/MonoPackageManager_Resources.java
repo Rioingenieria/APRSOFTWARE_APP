@@ -6,6 +6,8 @@ public class MonoPackageManager_Resources {
 		"APPRSoftware.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.Connectivity.Abstractions.dll",
+		"Plugin.Connectivity.dll",
 		"SQLite-net.dll",
 		"SQLitePCLRaw.batteries_green.dll",
 		"SQLitePCLRaw.batteries_v2.dll",
@@ -56,5 +58,5 @@ public class MonoPackageManager_Resources {
 	};
 	public static String[] Dependencies = new String[]{
 	};
-	public static String ApiPackageName = null;
+	public static String ApiPackageName = "Mono.Android.Platform.ApiLevel_28";
 }

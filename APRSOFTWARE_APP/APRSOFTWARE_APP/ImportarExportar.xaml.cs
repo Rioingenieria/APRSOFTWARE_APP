@@ -22,26 +22,31 @@ namespace APRSOFTWARE_APP
         }
         private async void btn_conectar_Clicked(object sender, EventArgs e)
         {
+            if (Modulo.CheckInternet()==false)
+            {
+                await DisplayAlert("Información", "Equipo sin conexion a internet.", "ACEPTAR");
+                return;
+            }
             if (picker_opcion.SelectedItem.ToString() == "Exportar")
             {
                 if (picker_tabla.SelectedItem.ToString() == "Lecturas")
                 {
+
                     var tabla_lecturas = Modulo.cnSqlite.Query<Lecturas>("select ifnull(id_lectura_app,'0') as id_lectura_app,ifnull(id_cliente,'0') as id_cliente,ifnull(nombre,'') as nombre,ifnull(fecha,'20220101') as fecha,ifnull(fecha_toma,'20220101') as fecha_toma,ifnull(mes,'no') as mes,ifnull(lectura_anterior,'0') as lectura_anterior,ifnull(lectura_actual,'0') as lectura_actual,ifnull(consumo,'0') as consumo,ifnull(promedio,'0') as promedio,ifnull(observacion,'no') as observacion from lecturas where mes='" + picker_mes.SelectedItem.ToString() + "' and anio='" + anio.Text.ToString() + "' order by id_cliente asc");
                     if (tabla_lecturas.Count() > 0)
                     {
                         if (Modulo.CrearConexionSQLServer() is false)
                         {
-                            await DisplayAlert("Informacion", "No se ha podido establecer conexion con APRSoftware.", "ACEPTAR");
+                            await DisplayAlert("Información", "No se ha podido establecer conexion con APRSoftware.", "ACEPTAR");
                             return;
                         }
-                        lbl_mensaje.Text = "Exportando datos...No cierre la aplicacion.";
-                        await Task.Run(() => { EnviarLecturasLocalesEnServidorSQLServer(tabla_lecturas); });
-                    lbl_mensaje.Text = "Datos Enviados correctamente";  
-                                            
+                        lbl_mensaje.Text = "Exportando datos...";
+                        await Task.Run( () =>  EnviarLecturasLocalesEnServidorSQLServer(tabla_lecturas));
+                        lbl_mensaje.Text = "Datos Exportados con exito!";
                     }
                     else
                     {
-                        await DisplayAlert("Informacion", "No existen lecturas ingresadas en mes y año seleccionado.", "ACEPTAR");
+                        await DisplayAlert("Información", "No existen lecturas ingresadas en mes y año seleccionado.", "ACEPTAR");
                     }
                 }
             }
@@ -49,18 +54,18 @@ namespace APRSOFTWARE_APP
             {
                 if (Modulo.CrearConexionSQLServer() is false)
                 {
-                    await DisplayAlert("Informacion", "No se ha logrado conectar con APRSoftware.", "ACEPTAR");
+                    await DisplayAlert("Información", "No se ha logrado conectar con APRSoftware.", "ACEPTAR");
                     return;
                 }
                 if (picker_tabla.SelectedItem.ToString() == "Clientes")
                 {
                     Modulo.ImportarClientes();
-                    await DisplayAlert("Informacion", "Clientes importados correctamente.", "ACEPTAR");
+                    await DisplayAlert("Información", "Clientes importados correctamente.", "ACEPTAR");
                 }
                 if (picker_tabla.SelectedItem.ToString() == "Rutas")
                 {
                     Modulo.ImportarRutas();
-                    await DisplayAlert("Informacion", "Rutas importadas correctamente.", "ACEPTAR");
+                    await DisplayAlert("Información", "Rutas importadas correctamente.", "ACEPTAR");
                 }
             }
 
@@ -129,6 +134,7 @@ namespace APRSOFTWARE_APP
                             }
                         }
                     }
+                 
                 }
             });
             Modulo.cnSqlserver.Close();
