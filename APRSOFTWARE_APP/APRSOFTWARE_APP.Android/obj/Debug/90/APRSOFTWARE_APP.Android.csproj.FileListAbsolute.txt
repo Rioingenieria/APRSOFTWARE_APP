@@ -1332,3 +1332,4 @@ C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP.Android\
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP.Android\obj\Debug\90\res\drawable\left_2.png
 C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP.Android\obj\Debug\90\res\drawable\right_2.png
+C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP.Android\obj\Debug\90\aapt_rules.txt

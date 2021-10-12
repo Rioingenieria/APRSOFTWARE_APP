@@ -113,5 +113,5 @@
 -keep class androidx.browser.browseractions.BrowserActionsFallbackMenuView { <init>(...); }
 
 # Referenced at C:\Users\v_13\Documents\APRSOFTWARE_APP\APRSOFTWARE_APP\APRSOFTWARE_APP.Android\obj\Debug\90\lp\45\jl\res\layout\rootlayout.xml:1
--keep class crc64720bb2db43a66fe9.FormsViewPager { <init>(...); }
+-keep class xamarin.forms.platform.android.appcompat.FormsViewPager { <init>(...); }
 
