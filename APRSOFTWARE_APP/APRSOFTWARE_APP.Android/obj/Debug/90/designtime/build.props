@@ -6,7 +6,7 @@ androidenableprofiledaot=false
 androiddextool=dx
 androidlinktool=proguard
 androidpackageformat=apk
-usesharedruntime=false
+usesharedruntime=true
 embedassembliesintoapk=true
 androidlinkmode=sdkonly
 androidlinkskip=
@@ -24,7 +24,7 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=637441512289999682
+_nugetassetstimestamp=637697414057905922
 typemapkind=strings-asm
 androidsupportedabis=armeabi-v7a
 x86

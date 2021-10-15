@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APRSOFTWARE_APP.DatoAPR"
+                          BackgroundColor="#000D1B">
+    <ContentPage.Resources>
+        <StyleSheet Source="/General.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Padding="50,0,50,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" >
+                <Label Text="RUT EMPRESA" 
+                       FontFamily="Nexa"
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="66666666-6" 
+                        x:Name="txt_rut"                      
+                        StyleClass="conexion_entry" />
+            </StackLayout>
+            <StackLayout Grid.Row="2" >
+                <Label Text="RAZON SOCIAL"
+                       FontFamily="Nexa"
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="RAZON SOCIAL" 
+                       x:Name="txt_razon_social" 
+                       IsReadOnly="True"
+                       StyleClass="conexion_entry" />
+            </StackLayout>
+            <StackLayout Grid.Row="3" >
+                <Label Text="ID GLOBAL APR"
+                       FontFamily="Nexa"                       
+                       StyleClass="conexion_label"/>
+                <Entry Placeholder="1433" 
+                       x:Name="txt_id" 
+                       Keyboard="Numeric"
+                       IsReadOnly="True"
+                       StyleClass="conexion_entry" />
+            </StackLayout>
+            
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="GUARDAR" Grid.Column="0" 
+                        Clicked="btn_guardar_clicked" 
+                        FontFamily="Big"
+                        FontSize="20"
+                        StyleClass="General_BtnGuardar"/>
+                <Button Text="Volver" Grid.Column="2" 
+                        Clicked="btn_volver_clicked" 
+                        FontFamily="Big"
+                        FontSize="20"
+                        StyleClass="General_BtnVolver"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

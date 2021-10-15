@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APRSOFTWARE_APP.ImportarExportar"
+             BackgroundColor="#000D1B">
+    <ContentPage.Resources>
+        <StyleSheet Source="/General.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="IMPORTAR - EXPORTAR"
+                       FontFamily="Big"
+                       HorizontalTextAlignment="Center"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="White">
+                </Label>
+                <BoxView Grid.Row="2"
+                         Grid.Column="1"
+                         VerticalOptions="Start" 
+                         HeightRequest="2" 
+                         Color="#0098C9">
+                </BoxView>
+                
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.3*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Opcion"
+                       Grid.Row="1"
+                       FontFamily="Nexa"
+                       FontSize="20"
+                       TextColor="White"
+                       Grid.Column="1"
+                       VerticalOptions="CenterAndExpand">                        
+                </Label>
+                <Picker Grid.Column="2"
+                        x:Name="picker_opcion"
+                        Grid.Row="1"
+                        TextColor="White"
+                        FontSize="20"
+                        Title="Seleccionar"
+                        TitleColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        SelectedItem="{Binding PickerImportarExportar}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Exportar</x:String>
+                            <x:String>Importar</x:String>                            
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label Text="Tipo"
+                       Grid.Row="2"
+                       FontFamily="Nexa"
+                       FontSize="20"
+                       TextColor="White"
+                       Grid.Column="1"
+                       VerticalOptions="CenterAndExpand">
+                </Label>
+                <Picker Grid.Column="2"
+                        x:Name="picker_tabla"
+                        Grid.Row="2"
+                        TextColor="White"
+                        FontSize="20"
+                        Title="Seleccionar"
+                        TitleColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        SelectedItem="{Binding PickerTipo}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Lecturas</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>         
+                <Label Text="Mes"
+                       Grid.Row="3"
+                       FontFamily="Nexa"
+                       FontSize="20"
+                       TextColor="White"
+                       Grid.Column="1"
+                       VerticalOptions="CenterAndExpand">
+                </Label>
+                <Picker x:Name="picker_mes" 
+                         TextColor="White"
+                        FontSize="20"
+                        TitleColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Title="Mes"
+                        SelectedItem="{Binding PickerMes}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>enero</x:String>
+                            <x:String>febrero</x:String>
+                            <x:String>marzo</x:String>
+                            <x:String>abril</x:String>
+                            <x:String>mayo</x:String>
+                            <x:String>junio</x:String>
+                            <x:String>julio</x:String>
+                            <x:String>agosto</x:String>
+                            <x:String>septiembre</x:String>
+                            <x:String>octubre</x:String>
+                            <x:String>noviembre</x:String>
+                            <x:String>diciembre</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label Text="Año"
+                       Grid.Row="4"
+                       FontFamily="Nexa"
+                       FontSize="20"
+                       TextColor="White"
+                       Grid.Column="1"
+                       VerticalOptions="CenterAndExpand">
+                </Label>
+                <Entry x:Name="anio"
+                       Grid.Row="4"
+                       Grid.Column="2"
+                       Text="{Binding TxtAño}"
+                       TextColor="White">                    
+                </Entry>
+                <Label Text="{Binding TxtMensaje}"
+                       HorizontalOptions="CenterAndExpand"       
+                       x:Name="lbl_mensaje"
+                       FontSize="20"
+                       FontFamily="Nexa"
+                       TextColor="White"
+                       Grid.Row="5"
+                       Grid.ColumnSpan="3">                    
+                </Label>
+                <Button Text="Conectar"
+                        x:Name="btn_conectar"
+                        Grid.Row="6"
+                        Margin="10,10,10,10"
+                        Grid.ColumnSpan="4"
+                        FontFamily="Big"
+                        FontSize="30"
+                        StyleClass="Btn_sincronizar"
+                        Command="{Binding RegisterCommand}">                    
+                </Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

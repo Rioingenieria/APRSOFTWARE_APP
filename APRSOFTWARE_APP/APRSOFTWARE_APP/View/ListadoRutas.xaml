@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APRSOFTWARE_APP.ListadoRutas"
+             BackgroundColor="#000D1B">
+    <ContentPage.Resources>
+        <StyleSheet Source="/General.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="LISTADO DE RUTAS"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       TextColor="White">
+                </Label>
+                <BoxView Grid.Row="2"
+                         Grid.Column="1"
+                         VerticalOptions="Start" 
+                         HeightRequest="2" 
+                         Color="#0098C9">
+                </BoxView>
+                <Grid Grid.Column="1" Grid.Row="3" Margin="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Picker x:Name="picker_mes" 
+                        TextColor="White"
+                        TitleColor="White"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Title="Mes">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>enero</x:String>
+                                <x:String>febrero</x:String>
+                                <x:String>marzo</x:String>
+                                <x:String>abril</x:String>
+                                <x:String>mayo</x:String>
+                                <x:String>junio</x:String>
+                                <x:String>julio</x:String>
+                                <x:String>agosto</x:String>
+                                <x:String>septiembre</x:String>
+                                <x:String>octubre</x:String>
+                                <x:String>noviembre</x:String>
+                                <x:String>diciembre</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Entry x:Name="anio"
+                           Grid.Row="0"
+                           PlaceholderColor="White"
+                           Placeholder="año"
+                           TextColor="White"
+                           Grid.Column="1">                        
+                    </Entry>
+                    <Button Grid.Row="0"
+                            StyleClass="General_BtnGuardar"
+                            FontSize="Small"
+                            x:Name="btn_mostrar"
+                            Clicked="btn_mostrar_Clicked"
+                            Grid.Column="2"
+                            Text="Mostrar">
+                    </Button>
+                </Grid>
+                <BoxView Grid.Row="4"
+                         Grid.Column="1"
+                         VerticalOptions="Start" 
+                         HeightRequest="2" 
+                         Color="#0098C9">
+                </BoxView>
+            </Grid>
+            <ListView x:Name="Rutas_listado"
+                      PropertyChanging="Rutas_listado_PropertyChanging"
+                      SeparatorVisibility="Default" 
+                      ItemSelected="Rutas_listado_ItemSelected"
+                      SeparatorColor="#C0CD29">                    
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0.5"/>
+                                    <ColumnDefinition Width="10"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="titulo_ruta"
+                                       HorizontalOptions="StartAndExpand"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       VerticalTextAlignment="Center"
+                                       Text="{Binding nombre_ruta, Mode=TwoWay}" 
+                                       TextColor="White"
+                                       Focused="titulo_ruta_Focused"
+                                       d:Text="{Binding .}"
+                                       FontSize="Small">
+                                </Label>
+                                <Label x:Name="pendientes"
+                                       Grid.Row="0"
+                                       Grid.Column="2"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="StartAndExpand"
+                                       Text="{Binding pendientes, Mode=TwoWay}" 
+                                       TextColor="White"
+                                       Focused="titulo_ruta_Focused"
+                                       d:Text="{Binding .}"
+                                       FontSize="Small">
+                                </Label>
+                                <Image  Grid.Row="0"
+                                        Grid.Column="3"
+                                        Source="{Binding IconSource, Mode=TwoWay}" 
+                                        StyleClass="sidebar_icono">
+                                </Image>
+                            </Grid>                         
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

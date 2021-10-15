@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
@@ -40,13 +41,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Conexion.xaml">
+    <EmbeddedResource Update="View\Conexion.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="DatoAPR.xaml">
+    <EmbeddedResource Update="View\DatoAPR.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ImportarExportar.xaml">
+    <EmbeddedResource Update="View\ImportarExportar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Lecturas_categorias\Lecturas_con_lectura.xaml">
@@ -61,13 +62,13 @@
     <EmbeddedResource Update="Lecturas_categorias\Lecturas_sin_lectura.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ListadoRutas.xaml">
+    <EmbeddedResource Update="View\ListadoRutas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Lectura_agregar.xaml">
+    <EmbeddedResource Update="View\Lectura_agregar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Login.xaml">
+    <EmbeddedResource Update="View\Login.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Menu\Masterpage.xaml">
@@ -79,7 +80,7 @@
     <EmbeddedResource Update="Menu\MasterpageMaster.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Sincronizar.xaml">
+    <EmbeddedResource Update="View\Sincronizar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

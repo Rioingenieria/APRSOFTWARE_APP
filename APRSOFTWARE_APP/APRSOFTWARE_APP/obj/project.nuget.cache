@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/3Zde8dgt3mT6F0OVYUCxmHzx0BtZXqnHN3SxAG0kbAtjBj6TBIG91FSYwqGLaQjHQUhMP/tqjUnHA3ERUxbuw==",
+  "dgSpecHash": "rUta7fXWWuKcVvRh7hXdXeF0pdV626PoAPUg7jqFdgwmKn+n7WuBCVeb/1e2MrXi7kNxtlbnKlLWyW5riclyDQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\v_13\\Documents\\APRSOFTWARE_APP\\APRSOFTWARE_APP\\APRSOFTWARE_APP\\APRSOFTWARE_APP.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\v_13\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\v_13\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -95,5 +96,16 @@
     "C:\\Users\\v_13\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\xamarin.forms\\4.5.0.617\\xamarin.forms.4.5.0.617.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"MvvmLightLibs 5.4.1.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \".NETStandard,Version=v2.1\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "MvvmLightLibs",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.1"
+      ]
+    }
+  ]
 }

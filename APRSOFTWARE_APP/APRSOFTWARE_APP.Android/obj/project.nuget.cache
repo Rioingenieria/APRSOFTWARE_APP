@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Z7skhXVlL32G+iH48kffxwx6Vix7ikgllH3C/Cps8YlR4VxLR4MEunzkHfHwqEtrVxMaVDiA90aRqs4jl4w5BA==",
+  "dgSpecHash": "mHBVEqbQiQUpfsGUIyMeQqllJZmDNBKOepb+X4sJ10vApnNhU51/XmBbs/JPHuC0sMdM0mPhEjK2T980lDb5wA==",
   "success": true,
   "projectFilePath": "C:\\Users\\v_13\\Documents\\APRSOFTWARE_APP\\APRSOFTWARE_APP\\APRSOFTWARE_APP.Android\\APRSOFTWARE_APP.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\v_13\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",
+    "C:\\Users\\v_13\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\sqlite-net-pcl\\1.6.292\\sqlite-net-pcl.1.6.292.nupkg.sha512",
     "C:\\Users\\v_13\\.nuget\\packages\\sqlitepclraw.bundle_green\\1.1.13\\sqlitepclraw.bundle_green.1.1.13.nupkg.sha512",

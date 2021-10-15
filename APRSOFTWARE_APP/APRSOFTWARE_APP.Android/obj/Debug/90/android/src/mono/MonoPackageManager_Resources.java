@@ -4,7 +4,11 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "APRSOFTWARE_APP.Android.dll" comes first in this list. */
 		"APRSOFTWARE_APP.Android.dll",
 		"APPRSoftware.dll",
+		"CommonServiceLocator.dll",
 		"FormsViewGroup.dll",
+		"GalaSoft.MvvmLight.dll",
+		"GalaSoft.MvvmLight.Extras.dll",
+		"GalaSoft.MvvmLight.Platform.dll",
 		"Newtonsoft.Json.dll",
 		"SQLite-net.dll",
 		"SQLitePCLRaw.batteries_green.dll",
@@ -56,5 +60,5 @@ public class MonoPackageManager_Resources {
 	};
 	public static String[] Dependencies = new String[]{
 	};
-	public static String ApiPackageName = null;
+	public static String ApiPackageName = "Mono.Android.Platform.ApiLevel_28";
 }

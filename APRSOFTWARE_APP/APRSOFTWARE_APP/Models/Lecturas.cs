@@ -6,7 +6,7 @@ using SQLite;
 namespace APRSOFTWARE_APP
 {
     [Table("lecturas")]
-    class Lecturas
+   public class Lecturas
     {
         [PrimaryKey, AutoIncrement]
         public int id_lectura_app { get; set; }
